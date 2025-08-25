@@ -1,7 +1,14 @@
 from DNAToolKit import *
+import random
 
 
-#Random DNA string
-rndDNAstr = "ATTATTGGC"
+#Generate random DNA Str that is 20 Nucleotides long
+randDNAStr = ''.join([random.choice(Nucleotides)
+                        for nuc in range(50)])
 
-print(vaildateSeq(rndDNAstr))
+
+
+
+print(vaildateSeq(randDNAStr))
+print(countFreq(randDNAStr))
+
