@@ -4,6 +4,8 @@ from Bio import Align
 
 from Bio.SeqUtils import gc_fraction
 
+import gzip
+
 # This loads in a Sequnece
 dna = Seq("ATCGATGCTAGCTAGGATAC")
 print(dna)
@@ -49,6 +51,19 @@ for sequence in SeqIO.parse("gene.fna", "fasta"):
 
     # Translation: converts to protein
     #print("Tranlation: ", mRNA.translate())
+
+
+
+# This line will use the gzip libray to access the .gz file and unzip it into a fastq file
+fastq_gz = SeqIO.parse(gzip.open('SRR35165452.fastq.gz', 'rt', encoding='utf-8'), 'fastq')
+fastq = next(fastq_gz)
+
+print("----------------------------------------")
+print(fastq)
+print(fastq.id, fastq.description, fastq.seq)
+print(fastq.letter_annotations) # these are the quaility scores
+
+
 
 
 
